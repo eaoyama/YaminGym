@@ -1,0 +1,119 @@
+@charset "ISO-8859-1";
+
+html,
+body {
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  color: #151980;
+  background-color: #f5f3f1 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+h1 {
+  color: #151980 !important;
+}
+
+h2 {
+  color: #151980 !important;
+}
+
+.form-signin {
+  padding: 2rem 3rem;
+  width: 30rem;
+  margin: 0 auto; /* This will center the form horizontally */
+  }
+
+.form-centered {
+  padding: 2rem 3rem;
+  width: 50rem;
+  margin: 0 auto; /* This will center the form horizontally */
+    }
+
+.form-border {
+  border: 1px solid #151980;
+  border-radius: 10px;
+  margin: 0 auto; /* This will center the form horizontally */
+  background-color: #fff;
+}
+.center {
+  text-align: center;
+}
+
+button {
+  cursor: pointer !important;
+  padding: .2rem 2rem !important;
+  border-radius: 20px  !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border .15s ease-in-out, border-color .15s ease-in-out,;
+}
+.button_primary {
+  color: #151980 !important;
+  background-color: #fff !important;
+  border-color: #151980 !important;
+  border: solid 1px;
+}
+
+.button_primary:hover {
+  color: #fff !important;
+  background-color: #151980 !important;
+
+}
+
+.button_secondary {
+  color: gray;
+  background-color: #fff;
+  border-color: gray;
+  border: solid 1px;
+}
+
+.button_secondary:hover {
+  color: #fff;
+  background-color: gray;
+
+}
+
+/* input:required {
+  border: 2px solid red;
+} */
+/* input:invalid {
+  border: 2px solid red;
+} */
+
+
+/* The message box is shown when the user clicks on the password field */
+#password_error {
+  display:none;
+  color: #151980;
+  position: relative;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid_password {
+  color: green;
+}
+
+.valid_password:before {
+  position: relative;
+  left: -35px;
+  content: "&#x2713;"
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid_password {
+  color: red;
+}
+
+.invalid_password:before {
+  position: relative;
+  left: -35px;
+  content: "U+0058";
+}
+
+.date-time-error-message {
+  color: red;
+  font-size: 14px;
+  display: none;
+}
