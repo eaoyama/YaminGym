@@ -86,8 +86,7 @@ public class RetrieveParticipantServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-		
+	
 		//Set my form data
 		String pId = request.getParameter("pId");
 		String firstName = request.getParameter("firstName");
@@ -95,8 +94,10 @@ public class RetrieveParticipantServlet extends HttpServlet {
 		String startDate = request.getParameter("startDate");
 		String batchId = request.getParameter("batchId");
         
-        // Prepare SQL statement based on user selection
+		// Use the database singleton instance
+		Database db = Database.getInstance();
 		
+        // Prepare SQL statement based on user selection
         String sql = "SELECT * FROM participant WHERE 1=1";
         if (pId != null && !pId.isEmpty()) {
             sql += " AND pId = ?";
@@ -111,23 +112,25 @@ public class RetrieveParticipantServlet extends HttpServlet {
         }
 		
 		        
-        try (Connection connection = Database.getInstance().getConnection();
-                PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (Connection connection = db.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
                int paramIndex = 1;
                if (pId != null && !pId.isEmpty()) {
-                   ps.setInt(paramIndex++, Integer.parseInt(pId));
+            	   preparedStatement.setInt(paramIndex++, Integer.parseInt(pId));
                } else if (firstName != null && !firstName.isEmpty()) {
-                   ps.setString(paramIndex++, "%" + firstName + "%");
+            	   preparedStatement.setString(paramIndex++, "%" + firstName + "%");
                } else if (lastName != null && !lastName.isEmpty()) {
-                   ps.setString(paramIndex++, "%" + lastName + "%");
+            	   preparedStatement.setString(paramIndex++, "%" + lastName + "%");
                } else if (startDate != null && !startDate.isEmpty()) {
-                   ps.setDate(paramIndex++, java.sql.Date.valueOf(LocalDate.parse(startDate)));
+            	   preparedStatement.setDate(paramIndex++, java.sql.Date.valueOf(LocalDate.parse(startDate)));
                } else if (batchId != null && !batchId.isEmpty()) {
-                   ps.setInt(paramIndex++, Integer.parseInt(batchId));
+            	   preparedStatement.setInt(paramIndex++, Integer.parseInt(batchId));
                }
+        	
+
                
-               ResultSet resultSet = ps.executeQuery();
+               ResultSet resultSet = preparedStatement.executeQuery();
                
 //				try (Connection connection=db.getConnection(); PreparedStatement ps = connection.prepareStatement(sql);){
 //				ps.setInt(1, sendToMysql.getpId());
@@ -162,8 +165,9 @@ public class RetrieveParticipantServlet extends HttpServlet {
                }
 
            } catch (Exception e) {
-               e.printStackTrace();
-               response.getWriter().println("An error occurred while retrieving the participant.");
+      		System.out.println("Error while retrieving participant" +e);
+        	  e.printStackTrace();
+
            }
 
       		

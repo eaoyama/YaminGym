@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>Batch Added</title>
+<title>Class Added</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -11,6 +11,8 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+
+	
 </head>
 <body>
     <jsp:include page="navBar.jsp"/>
@@ -24,7 +26,7 @@
 			<div class="row mb-3">
 			<p> 
 			Batch ID: ${batchId}<br>
-			Batch Name: ${batchName}<br>
+			Class Name: ${batchName}<br>
 			Class Held On: ${dayOfClass}<br>
 			Class Start Time: ${startHour}
 			</p>

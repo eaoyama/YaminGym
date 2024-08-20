@@ -12,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+	
 </head>
 <body>
     <jsp:include page="navBar.jsp"/>
@@ -23,13 +24,12 @@
 			style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
 			
 			<% if (request.getAttribute("successMessage") != null) { %>
-			<h3>Welcome, ${userFirstName} ${userFirstName}.</h3>
-			<h3>${successMessage}</h3>
-			<% } %>	
-	
-				
-			
+			<h3>Welcome, ${userFirstName} ${userLastName}.</h3>
+			<% } %>			
 		</div>
+		<p>
+		<h3>${successMessage}</h3>
+		</p>
 
 
 	</div>

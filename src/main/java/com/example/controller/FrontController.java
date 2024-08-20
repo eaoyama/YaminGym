@@ -27,28 +27,6 @@ public class FrontController extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String requestType = request.getParameter("type");
-		RequestDispatcher dispatcher = null;
-		
-		if (requestType.equals("login")) {
-			dispatcher = request.getRequestDispatcher("login");			
-		} else if (requestType.equals("register")){
-			dispatcher = request.getRequestDispatcher("register");
-		} else if (requestType.equals("logout")){
-			dispatcher = request.getRequestDispatcher("logout");
-		} else if (requestType.equals("createParticipant")){
-			dispatcher = request.getRequestDispatcher("createParticipant");
-		} else if (requestType.equals("updateParticipant")){
-			dispatcher = request.getRequestDispatcher("updateParticipant");
-		} else if (requestType.equals("getParticipant")){
-			dispatcher = request.getRequestDispatcher("getParticipant");
-		} else if (requestType.equals("deleteParticipant")){
-			dispatcher = request.getRequestDispatcher("deleteParticipant");
-		} else {
-			dispatcher = request.getRequestDispatcher("error");
-		}
-		
-		dispatcher.forward(request, response);
 	}
 
 }

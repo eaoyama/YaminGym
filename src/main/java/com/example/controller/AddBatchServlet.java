@@ -51,12 +51,12 @@ public class AddBatchServlet extends HttpServlet {
 		//Set my form data in my Batch object
 		sendToMysql.setBatchName(request.getParameter("batchName"));
 		
-		String dayOfClassToString = request.getParameter("dayOfClass");
-		DayOfWeek dayOfClass = DayOfWeek.valueOf(dayOfClassToString);
+		String dayOfClassString = request.getParameter("dayOfClass");
+		DayOfWeek dayOfClass = DayOfWeek.valueOf(dayOfClassString);
 		sendToMysql.setDayOfClass(dayOfClass);
 					
-		String startHourToString = request.getParameter("startHour");
-		LocalTime startHour = LocalTime.parse(startHourToString);
+		String startHourString = request.getParameter("startHour");
+		LocalTime startHour = LocalTime.parse(startHourString);
 		sendToMysql.setStartHour(startHour);
 		
 		// Use the database singleton instance
@@ -89,7 +89,7 @@ public class AddBatchServlet extends HttpServlet {
 				
 				System.out.println("Batch created successfully. result is:" +result);
 
-				request.setAttribute("successMessage", "Batch added successfully!");
+				request.setAttribute("successMessage", "Class created successfully!");
 				request.setAttribute("batchId", sendToMysql.getBatchId());
 				request.setAttribute("batchName", sendToMysql.getBatchName());
 				request.setAttribute("dayOfClass", sendToMysql.getDayOfClass());

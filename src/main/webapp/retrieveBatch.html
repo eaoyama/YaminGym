@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Update User</title>
+<title>Retrieve Class</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -86,76 +86,51 @@
 </nav>
 
 
-
 	<div class="form-border"
 		style="margin-top: 2rem; width: 40rem; padding: 2rem;">
-		<div
-			style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
-			<h3>Update Admin User Here</h3>
-		</div>
-
-		<form action="UpdateUserServlet" method="post" id="updateUser"
-			style="padding-top: 2rem">
-
-			<div class="row mb-3">
-				<label for="userId" class="col-sm-3 col-form-label"
-					style="text-align: right;">User ID*</label>
-				<div class="col-sm-9">
-					<input type="number" class="form-control" id="userId"
-						name="userId" required>
-				</div>
+		<div style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
+			<h3>Retrieve Existing Class Here</h3>
 			</div>
+
+		<form action="RetrieveBatchServlet" method="post"
+			id="retrieveParticipant" style="padding-top: 2rem">
+
+			<div class="row mb-3"><h4>Retrieve data by:</h4></div>
 			
+	<div class="row mb-3">
+		<label for="batchId" class="col-sm-3 col-form-label"
+			style="text-align: right;">Batch Id</label>
+		<div class="col-sm-9">
+			<input type="number" class="form-control" id="batchId" name="batchId">
+		</div>
+	</div>
+
 			<div class="row mb-3">
-				<label for="userFirstName" class="col-sm-3 col-form-label"
-					style="text-align: right;">First Name*</label>
+				<label for="batchName" class="col-sm-3 col-form-label" style="text-align:right;">Class Name</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="userFirstName"
-						name="userFirstName" required>
+					<input type="text" class="form-control" id="batchName" name="batchName">
+				</div>
+			</div>
+
+            <div class="row mb-3">
+				<label for="dayOfClass" class="col-sm-3 col-form-label" style="text-align:right;">Class held on</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="dayOfClass" name="dayOfClass">
 				</div>
 			</div>
 
 			<div class="row mb-3">
-				<label for="userLastName" class="col-sm-3 col-form-label"
-					style="text-align: right;">Last Name*</label>
+				<label for="startHour" class="col-sm-3 col-form-label" style="text-align:right;">Class start time</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="userLastName"
-						name="userLastName" required>
+					<input type="time" class="form-control" id="startHour" name="startHour">
 				</div>
 			</div>
 
-			<div class="row mb-3">
-				<label for="userEmail" class="col-sm-3 col-form-label"
-					style="text-align: right;">Email*</label>
-				<div class="col-sm-9">
-					<input type="email" class="form-control" id="userEmail"
-						name="userEmail" required>
-				</div>
-			</div>
 
-			<div class="row mb-3">
-				<label for="userPassword" class="col-sm-3 col-form-label"  style="text-align: right;">Password*</label><br>
-				<div class="col-sm-9">
-					<input type="password" class="form-control" id="userPassword"
-						name="userPassword" minlength="8" maxlength="12"
-						placeholder="min. 8 / max. 12 characters"
-						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*" required>
-					<div style="text-align: left; margin-left: 2rem">
-						Password must contain at least:
-						<ul>
-							<li>1 uppercase letter</li>
-							<li>1 lowercase letter</li>
-							<li>1 number</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<p style="text-align: right;">
-				<button class="button button_primary" type="submit"
-					value="UpdateUser">UPDATE ADMIN USER</button>
+			<p style="text-align:right;">
+				<button class="button button_primary" type="submit" value="RetrieveBatch">RETRIEVE CLASS</button>
 			</p>
-		</form>
+	</form>
 
 	</div>
 

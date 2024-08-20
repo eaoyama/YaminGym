@@ -5,7 +5,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Participant Added</title>
-
 <link rel="stylesheet" href="style.css">
 
 <link
@@ -13,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
+
 </head>
 <body>
     <jsp:include page="navBar.jsp"/>

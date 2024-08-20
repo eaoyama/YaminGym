@@ -18,7 +18,8 @@ import com.example.database.Database;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/Login")
+
+//@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,16 +38,16 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
        // Get the user input from the form
-        String userId = request.getParameter("userId");
+        String userEmail = request.getParameter("userEmail");
         String userPassword = request.getParameter("userPassword");
 
         // SQL query to check if the user exists with the given email and password
-        String sql = "SELECT * FROM user WHERE userId = ? AND userPassword = ?";
+        String sql = "SELECT * FROM user WHERE userEmail = ? AND userPassword = ?";
         
         try (Connection connection = Database.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             
-            preparedStatement.setString(1, userId);
+            preparedStatement.setString(1, userEmail);
             preparedStatement.setString(2, userPassword);
             
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -63,6 +64,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 // If user is not found, return to login page with error message
                 request.setAttribute("errorMessage", "Invalid email or password. Please try again.");
+                System.out.println("Invalid email or password");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
                 dispatcher.forward(request, response);
             }
@@ -70,6 +72,7 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
             // Handle database errors
             request.setAttribute("errorMessage", "An error occurred during login. Please try again.");
+            System.out.println("Error during login" +e);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/index.html");
             dispatcher.forward(request, response);
         }

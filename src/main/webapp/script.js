@@ -4,7 +4,7 @@
 
  // Email Validity on Signin and Client profile pages
 window.onload = function () {
-    const email = document.getElementById("username");
+    const email = document.getElementById("userEmail");
 
     email.addEventListener("blur", (event) => {
         if (email.validity.typeMismatch) {
@@ -16,7 +16,7 @@ window.onload = function () {
     });
 
     // Password validity on Signin page
-    let myInput = document.getElementById("password");
+    let myInput = document.getElementById("userPassword");
     let letter = document.getElementById("letter");
     let capital = document.getElementById("capital");
     let number = document.getElementById("number");

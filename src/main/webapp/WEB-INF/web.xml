@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" id="WebApp_ID" version="5.0">
-  <display-name>JDBCSkillEndProject_YaminGym</display-name>
+  <display-name>Course2_EndProject_YaminGym</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>HelloServlet</display-name>
-    <servlet-name>HelloServlet</servlet-name>
-    <servlet-class>com.example.controller.HelloServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/HelloServlet</url-pattern>
-    <url-pattern>/Hello</url-pattern>
-    <url-pattern>/Welcome</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
@@ -26,17 +14,6 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
     <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>RegisterServlet</display-name>
-    <servlet-name>RegisterServlet</servlet-name>
-    <servlet-class>com.example.controller.RegisterServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/RegisterServlet</url-pattern>
-    <url-pattern>/Register</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -165,5 +142,31 @@
     <url-pattern>/RetrieveParticipantServlet</url-pattern>
     <url-pattern>/RetrieveParticipant</url-pattern>
     <url-pattern>/GetParticipant</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetrieveBatchServlet</display-name>
+    <servlet-name>RetrieveBatchServlet</servlet-name>
+    <servlet-class>com.example.controller.RetrieveBatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveBatchServlet</servlet-name>
+    <url-pattern>/RetrieveBatchServlet</url-pattern>
+    <url-pattern>/RetrieveBatch</url-pattern>
+    <url-pattern>/RetrieveClass</url-pattern>
+    <url-pattern>/GetBatch</url-pattern>
+    <url-pattern>/GetClass</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetrieveUserListServlet</display-name>
+    <servlet-name>RetrieveUserListServlet</servlet-name>
+    <servlet-class>com.example.controller.RetrieveUserListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveUserListServlet</servlet-name>
+    <url-pattern>/RetrieveUserListServlet</url-pattern>
+    <url-pattern>/GetUserList</url-pattern>
+    <url-pattern>/RetrieveUserList</url-pattern>
   </servlet-mapping>
 </web-app>

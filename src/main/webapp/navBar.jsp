@@ -44,6 +44,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Participants</a>
                     <ul class="dropdown-menu" aria-labelledby="participantDropdown">
                         <li><a class="dropdown-item" href="addParticipant.html">Add Participant</a></li>
+                        <li><a class="dropdown-item" href="retrieveParticipant.html">Retrieve Participant</a></li>
                         <li><a class="dropdown-item" href="updateParticipant.html">Update Participant</a></li>
                         <li><a class="dropdown-item" href="deleteParticipant.html">Delete Participant</a></li>
                     </ul>
@@ -52,11 +53,12 @@
                 <!-- Batch Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="batchDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Batches</a>
+                        data-bs-toggle="dropdown" aria-expanded="false">Classes</a>
                     <ul class="dropdown-menu" aria-labelledby="batchDropdown">
-                        <li><a class="dropdown-item" href="addBatch.html">Add Batch</a></li>
-                        <li><a class="dropdown-item" href="updateBatch.html">Update Batch</a></li>
-                        <li><a class="dropdown-item" href="deleteBatch.html">Delete Batch</a></li>
+                        <li><a class="dropdown-item" href="addBatch.html">Add Class</a></li>
+                        <li><a class="dropdown-item" href="retrieveBatch.html">Retrieve Class</a></li>
+                        <li><a class="dropdown-item" href="updateBatch.html">Update Class</a></li>
+                        <li><a class="dropdown-item" href="deleteBatch.html">Delete Class</a></li>
                     </ul>
                 </li>
 
@@ -66,6 +68,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Users</a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="addUser.html">Add User</a></li>
+                        <li><a class="dropdown-item" href="RetrieveUserList">Retrieve User List</a></li>
                         <li><a class="dropdown-item" href="updateUser.html">Update User</a></li>
                         <li><a class="dropdown-item" href="deleteUser.html">Delete User</a></li>
                     </ul>
