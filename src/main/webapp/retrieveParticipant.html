@@ -42,6 +42,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Participants</a>
                     <ul class="dropdown-menu" aria-labelledby="participantDropdown">
                         <li><a class="dropdown-item" href="addParticipant.html">Add Participant</a></li>
+                        <li><a class="dropdown-item" href="RetrieveParticipantList">Retrieve Participant List</a></li>
                         <li><a class="dropdown-item" href="retrieveParticipant.html">Retrieve Participant</a></li>
                         <li><a class="dropdown-item" href="updateParticipant.html">Update Participant</a></li>
                         <li><a class="dropdown-item" href="deleteParticipant.html">Delete Participant</a></li>
@@ -54,6 +55,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Classes</a>
                     <ul class="dropdown-menu" aria-labelledby="batchDropdown">
                         <li><a class="dropdown-item" href="addBatch.html">Add Class</a></li>
+                        <li><a class="dropdown-item" href="RetrieveBatchList">Retrieve Class List</a></li>
                         <li><a class="dropdown-item" href="retrieveBatch.html">Retrieve Class</a></li>
                         <li><a class="dropdown-item" href="updateBatch.html">Update Class</a></li>
                         <li><a class="dropdown-item" href="deleteBatch.html">Delete Class</a></li>
@@ -66,7 +68,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Users</a>
                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="addUser.html">Add User</a></li>
-                        <li><a class="dropdown-item" href="RetrieveUser">Retrieve User List</a></li>
+                        <li><a class="dropdown-item" href="RetrieveUserList">Retrieve User List</a></li>
                         <li><a class="dropdown-item" href="updateUser.html">Update User</a></li>
                         <li><a class="dropdown-item" href="deleteUser.html">Delete User</a></li>
                     </ul>
@@ -87,7 +89,7 @@
 
 
 	<div class="form-border"
-		style="margin-top: 2rem; width: 40rem; padding: 2rem;">
+		style="margin-top: 2rem; width: 80%; padding: 2rem;">
 		<div style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
 			<h3>Retrieve Existing Participant Here</h3>
 			</div>
@@ -97,31 +99,50 @@
 
 			<div class="row mb-3"><h4>Retrieve data by:</h4></div>
 			
-	<div class="row mb-3">
+		<p style="text-align: right;">
+		<button class="button button_primary" type="reset"
+			value="Reset">RESET</button>
+	</p>
+
+		
+	<div class="row mb-3" style="padding-top:2rem">
 		<label for="pId" class="col-sm-3 col-form-label"
 			style="text-align: right;">Participant Id</label>
 		<div class="col-sm-9">
 			<input type="number" class="form-control" id="pId" name="pId">
 		</div>
 	</div>
+			<p style="text-align: right;">
+		<button class="button button_primary" type="submit"
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
+	</p>
 
-	<div class="row mb-3">
+	<div class="row mb-3" style="padding-top:2rem">
 		<label for="firstName" class="col-sm-3 col-form-label"
 			style="text-align: right;">First Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="firstName" name="firstName">
 		</div>
 	</div>
+		<p style="text-align: right;">
+		<button class="button button_primary" type="submit"
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
+	</p>
 
-	<div class="row mb-3">
+	<div class="row mb-3" style="padding-top:2rem">
 		<label for="lastName" class="col-sm-3 col-form-label"
 			style="text-align: right;">Last Name</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="lastName" name="lastName">
 		</div>
 	</div>
+	
+		<p style="text-align: right;">
+		<button class="button button_primary" type="submit"
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
+	</p>
 
-	<div class="row mb-3">
+	<div class="row mb-3" style="padding-top:2rem">
 		<label for="startDate" class="col-sm-3 col-form-label"
 			style="text-align: right;">Start Date</label>
 		<div class="col-sm-9">
@@ -129,8 +150,12 @@
 				name="startDate">
 		</div>
 	</div>
+		<p style="text-align: right;">
+		<button class="button button_primary" type="submit"
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
+	</p>
 
-	<div class="row mb-3">
+	<div class="row mb-3" style="padding-top:2rem">
 		<label for="batchId" class="col-sm-3 col-form-label"
 			style="text-align: right;">Class</label>
 		<div class="col-sm-9">
@@ -144,10 +169,22 @@
 			</select>
 		</div>
 	</div>
-
 	<p style="text-align: right;">
 		<button class="button button_primary" type="submit"
-			value="RetrieveParticipant">RETRIEVE PARTICIPANT</button>
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
+	</p>
+	
+	<div class="row mb-3" style="padding-top:2rem">
+		<label for="batchName" class="col-sm-3 col-form-label"
+			style="text-align: right;">Class Name</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" id="batchName" name="batchName">
+		</div>
+	</div>
+	
+	<p style="text-align: right;">
+		<button class="button button_primary" type="submit"
+			value="RetrieveParticipant">SEARCH PARTICIPANT</button>
 	</p>
 	</form>
 

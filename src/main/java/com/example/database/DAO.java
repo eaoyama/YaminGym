@@ -29,16 +29,4 @@ public interface DAO {
     // Method to execute a query (e.g., select)
     ResultSet executeQuery(PreparedStatement preparedStatement);
 
-    
-    //Don't need below if we have above?? 
-	
-	//contract method to CRUD batch in Database
-	Batch getBatch(Integer batchId);
-	
-	//contract method to CRUD participant in Database
-	Participant getParticipant(Integer pId);
-	
-	//contract method to CRUD users in Database
-	User getUser(Integer userId);
-
 }

@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>Participant List</title>
+<title>Class List</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -27,27 +27,19 @@
 			       <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Start Date</th>
-                    <th>Batch Id</th>
+                    <th>Batch ID</th>
                     <th>Class Name</th>
+                    <th>Class held on</th>
+                    <th>Class start Time</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="participant" items="${participantList}">
+                <c:forEach var="batch" items="${batchList}">
                     <tr>
-                        <td>${participant.pId}</td>
-                        <td>${participant.firstName}</td>
-                        <td>${participant.lastName}</td>
-                        <td>${participant.phone}</td>
-                        <td>${participant.email}</td>
-                        <td>${participant.startDate}</td>
-                        <td>${participant.batchId}</td>
-                        <td>${participant.batchName}</td>
+                        <td>${batch.batchId}</td>
+                        <td>${batch.batchName}</td>
+                        <td>${batch.dayOfClass}</td>
+                        <td>${batch.startHour}</td>
                     </tr>
                 </c:forEach>
             </tbody>

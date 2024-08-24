@@ -44,6 +44,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Participants</a>
                     <ul class="dropdown-menu" aria-labelledby="participantDropdown">
                         <li><a class="dropdown-item" href="addParticipant.html">Add Participant</a></li>
+                        <li><a class="dropdown-item" href="RetrieveParticipantList">Retrieve Participant List</a></li>
                         <li><a class="dropdown-item" href="retrieveParticipant.html">Retrieve Participant</a></li>
                         <li><a class="dropdown-item" href="updateParticipant.html">Update Participant</a></li>
                         <li><a class="dropdown-item" href="deleteParticipant.html">Delete Participant</a></li>
@@ -56,6 +57,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false">Classes</a>
                     <ul class="dropdown-menu" aria-labelledby="batchDropdown">
                         <li><a class="dropdown-item" href="addBatch.html">Add Class</a></li>
+                        <li><a class="dropdown-item" href="RetrieveBatchList">Retrieve Class List</a></li>
                         <li><a class="dropdown-item" href="retrieveBatch.html">Retrieve Class</a></li>
                         <li><a class="dropdown-item" href="updateBatch.html">Update Class</a></li>
                         <li><a class="dropdown-item" href="deleteBatch.html">Delete Class</a></li>

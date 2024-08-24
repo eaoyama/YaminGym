@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.database.Database;
 import com.example.model.Participant;
@@ -93,22 +95,44 @@ public class RetrieveParticipantServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		String startDate = request.getParameter("startDate");
 		String batchId = request.getParameter("batchId");
+		String batchName = request.getParameter("batchName");
         
 		// Use the database singleton instance
 		Database db = Database.getInstance();
 		
         // Prepare SQL statement based on user selection
-        String sql = "SELECT * FROM participant WHERE 1=1";
+        String sql = "SELECT p.*, b.batchName FROM participant p JOIN batch b ON p.batchId = b.batchId WHERE 1=1";
+        
         if (pId != null && !pId.isEmpty()) {
-            sql += " AND pId = ?";
-        } else if (firstName != null && !firstName.isEmpty()) {
-            sql += " AND firstName LIKE ?";
-        } else if (lastName != null && !lastName.isEmpty()) {
-            sql += " AND lastName LIKE ?";
-        } else if (startDate != null && !startDate.isEmpty()) {
-            sql += " AND startDate >= ?";
-        } else if (batchId != null && !batchId.isEmpty()) {
-            sql += " AND batchId = ?";
+            sql += " AND p.pId = ?";
+            String searchCriteria = pId;
+            request.setAttribute("searchCriteria",searchCriteria);
+        } 
+        if (firstName != null && !firstName.isEmpty()) {
+            sql += " AND p.firstName LIKE ?";
+            String searchCriteria = firstName;
+            request.setAttribute("searchCriteria",searchCriteria);
+        } 
+        if (lastName != null && !lastName.isEmpty()) {
+            sql += " AND p.lastName LIKE ?";
+            String searchCriteria = lastName;
+            request.setAttribute("searchCriteria",searchCriteria);
+        } 
+        if (startDate != null && !startDate.isEmpty()) {
+            sql += " AND p.startDate >= ?";
+            String searchCriteria = startDate;
+            request.setAttribute("searchCriteria",searchCriteria);
+        } 
+        if (batchId != null && !batchId.isEmpty()) {
+            sql += " AND p.batchId = ?";
+            String searchCriteria = batchId;
+            request.setAttribute("searchCriteria",searchCriteria);
+        }
+        
+        if (batchName != null && !batchName.isEmpty()) {
+            sql += " AND b.batchName LIKE ?";
+        	String searchCriteria = batchName;
+            request.setAttribute("searchCriteria",searchCriteria);
         }
 		
 		        
@@ -118,18 +142,23 @@ public class RetrieveParticipantServlet extends HttpServlet {
                int paramIndex = 1;
                if (pId != null && !pId.isEmpty()) {
             	   preparedStatement.setInt(paramIndex++, Integer.parseInt(pId));
-               } else if (firstName != null && !firstName.isEmpty()) {
+               } 
+               if (firstName != null && !firstName.isEmpty()) {
             	   preparedStatement.setString(paramIndex++, "%" + firstName + "%");
-               } else if (lastName != null && !lastName.isEmpty()) {
+               } 
+               if (lastName != null && !lastName.isEmpty()) {
             	   preparedStatement.setString(paramIndex++, "%" + lastName + "%");
-               } else if (startDate != null && !startDate.isEmpty()) {
+               } 
+               if (startDate != null && !startDate.isEmpty()) {
             	   preparedStatement.setDate(paramIndex++, java.sql.Date.valueOf(LocalDate.parse(startDate)));
-               } else if (batchId != null && !batchId.isEmpty()) {
+               } 
+               if (batchId != null && !batchId.isEmpty()) {
             	   preparedStatement.setInt(paramIndex++, Integer.parseInt(batchId));
                }
-        	
+               if (batchName != null && !batchName.isEmpty()) {
+            	   preparedStatement.setString(paramIndex++,  "%" + batchName + "%");
+               }
 
-               
                ResultSet resultSet = preparedStatement.executeQuery();
                
 //				try (Connection connection=db.getConnection(); PreparedStatement ps = connection.prepareStatement(sql);){
@@ -146,27 +175,42 @@ public class RetrieveParticipantServlet extends HttpServlet {
 //					//create a Dispatcher and forward the information to your success page
 //				}
 
-
+               
+               // Create a list to hold the participant objects
+               List<Participant> participantList = new ArrayList<>();
 
                // Check if a participant was found and set attributes
-               if (resultSet.next()) {
-                   request.setAttribute("pId", resultSet.getInt("pId"));
-                   request.setAttribute("firstName", resultSet.getString("firstName"));
-                   request.setAttribute("lastName", resultSet.getString("lastName"));
-                   request.setAttribute("startDate", resultSet.getDate("startDate").toString());
-                   request.setAttribute("batchId", resultSet.getInt("batchId"));
+               while (resultSet.next()) {
+                   Participant participant = new Participant();
 
-                   // Forward to JSP page to display the participant data
-                   RequestDispatcher dispatcher = request.getRequestDispatcher("retrieveParticipant.jsp");
-                   dispatcher.forward(request, response);
-               } else {
-                   // Handle case where no participant is found
-                   response.getWriter().println("No participant found with the provided criteria.");
-               }
-
+                   participant.setpId(resultSet.getInt("pId"));
+                   participant.setFirstName(resultSet.getString("firstName"));
+                   participant.setLastName(resultSet.getString("lastName"));
+                   participant.setPhone(resultSet.getString("phone"));
+                   participant.setEmail(resultSet.getString("email"));
+                   participant.setStartDate(resultSet.getDate("startDate").toLocalDate());
+                   participant.setBatchId(resultSet.getInt("batchId"));
+                   participant.setBatchName(resultSet.getString("batchName"));
+                   
+                   participantList.add(participant);
+                   
+               } 
+               
+               request.setAttribute("participantList", participantList);
+               
+               // Forward to JSP page to display the participant data               
+               if (participantList.isEmpty()) {
+            	    response.getWriter().println("No participant found with the provided criteria.");
+            	} else {
+            	    request.setAttribute("participantList", participantList);
+            	    RequestDispatcher dispatcher = request.getRequestDispatcher("retrieveParticipant.jsp");
+            	    dispatcher.forward(request, response);
+            	}
+               
            } catch (Exception e) {
       		System.out.println("Error while retrieving participant" +e);
         	  e.printStackTrace();
+              response.getWriter().println("No participant found with the provided criteria.");
 
            }
 

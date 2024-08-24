@@ -19,7 +19,7 @@
 <body>
     <jsp:include page="navBar.jsp"/>
 
-	<div class="form-border" style="margin-top: 2rem; width: 40rem; padding: 2rem;">
+	<div class="form-border" style="margin-top: 2rem; width: 80%; padding: 2rem;">
 		<div style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
 			<h3>${successMessage}</h3>
 		</div>

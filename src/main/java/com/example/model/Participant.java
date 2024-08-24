@@ -12,6 +12,7 @@ public class Participant {
 	private String email;
 	private LocalDate startDate;  
 	private Integer batchId;
+	private String batchName;
 	
 	// Constructors 
 
@@ -20,7 +21,7 @@ public class Participant {
 	}
 
 	public Participant(Integer pId, String firstName, String lastName, String phone, String email, LocalDate startDate,
-			Integer batchId) {
+			Integer batchId, String batchName) {
 		super();
 		this.pId = pId;
 		this.firstName = firstName;
@@ -29,6 +30,7 @@ public class Participant {
 		this.email = email;
 		this.startDate = startDate;
 		this.batchId = batchId;
+		this.batchName = batchName;
 	}
 
 
@@ -89,11 +91,20 @@ public class Participant {
 	public void setBatchId(Integer batchId) {
 		this.batchId = batchId;
 	}
+	
+	public String getBatchName() {
+		return batchName;
+	}
+	
+	public void setBatchName(String batchName) {
+		this.batchName = batchName;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Participant [pId=" + pId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
-				+ ", email=" + email + ", startDate=" + startDate + ", batchId=" + batchId + "]";
+				+ ", email=" + email + ", startDate=" + startDate + ", batchId=" + batchId + ", batchName=" + batchName +"]";
 	}
 
 

@@ -169,4 +169,30 @@
     <url-pattern>/GetUserList</url-pattern>
     <url-pattern>/RetrieveUserList</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetrieveParticipantListServlet</display-name>
+    <servlet-name>RetrieveParticipantListServlet</servlet-name>
+    <servlet-class>com.example.controller.RetrieveParticipantListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveParticipantListServlet</servlet-name>
+    <url-pattern>/RetrieveParticipantListServlet</url-pattern>
+    <url-pattern>/RetrieveParticipantList</url-pattern>
+    <url-pattern>/GetParticipantList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RetrieveBatchListServlet</display-name>
+    <servlet-name>RetrieveBatchListServlet</servlet-name>
+    <servlet-class>com.example.controller.RetrieveBatchListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveBatchListServlet</servlet-name>
+    <url-pattern>/RetrieveBatchListServlet</url-pattern>
+    <url-pattern>/RetrieveBatchList</url-pattern>
+    <url-pattern>/GetBatchList</url-pattern>
+    <url-pattern>/RetrieveClassList</url-pattern>
+    <url-pattern>/GetClassList</url-pattern>
+  </servlet-mapping>
 </web-app>

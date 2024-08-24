@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Retrieve Participants</title>
+<title>Participant List</title>
+
 <link rel="stylesheet" href="style.css">
 
 <link
@@ -16,62 +16,42 @@
 </head>
 <body>
     <jsp:include page="navBar.jsp"/>
-    
-    	<div class="form-border"
-		style="margin-top: 2rem; width: 40rem; padding: 2rem;">
+
+	<div class="form-border" style="margin-top: 2rem; width:80%; padding: 2rem;">
 		<div style="border-bottom-style: solid; border-radius: 10px 10px 0px 0px; border-bottom-width: 1px; border-bottom-color: #151980;">
-			<h3>Retrieve Existing Participant Here</h3>
-			</div>
-
-		<form action="" method=""
-			id="retrieveParticipant" style="padding-top: 2rem">
-
-			<div class="row mb-3"><h4>Participant Retrieved</h4></div>
+			<h3>Searched by: ${searchCriteria}</h3>
+		</div>
+		
+		<form style="padding-top:2rem">
+			<div class="row mb-3">
+			       <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Start Date</th>
+                    <th>Batch Id</th>
+                    <th>Class Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="participant" items="${participantList}">
+                    <tr>
+                        <td>${participant.pId}</td>
+                        <td>${participant.firstName}</td>
+                        <td>${participant.lastName}</td>
+                        <td>${participant.phone}</td>
+                        <td>${participant.email}</td>
+                        <td>${participant.startDate}</td>
+                        <td>${participant.batchId}</td>
+                        <td>${participant.batchName}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 			
-	<div class="row mb-3">
-		<label for="pId" class="col-sm-3 col-form-label"
-			style="text-align: right;">Participant Id</label>
-		<div class="col-sm-9">
-			<input type="number" class="form-control" id="pId" name="pId" value='${pId}' readonly>
-		</div>
-	</div>
-
-	<div class="row mb-3">
-		<label for="firstName" class="col-sm-3 col-form-label"
-			style="text-align: right;">First Name</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" id="firstName" name="firstName" value='${firstName}' readonly>
-		</div>
-	</div>
-
-	<div class="row mb-3">
-		<label for="lastName" class="col-sm-3 col-form-label"
-			style="text-align: right;">Last Name</label>
-		<div class="col-sm-9">
-			<input type="text" class="form-control" id="lastName" name="lastName" value='${lastName}' readonly>
-		</div>
-	</div>
-
-	<div class="row mb-3">
-		<label for="startDate" class="col-sm-3 col-form-label"
-			style="text-align: right;">Start Date</label>
-		<div class="col-sm-9">
-			<input type="date" class="form-control" id="startDate" name="startDate" value='${startDate}' readonly>
-		</div>
-	</div>
-
-	<div class="row mb-3">
-		<label for="batchId" class="col-sm-3 col-form-label"
-			style="text-align: right;">Class</label>
-		<div class="col-sm-9">
-		<input type="number" class="form-control" id="batchId" name="batchId" value='${batchId}' readonly>
-		</div>
-	</div>
-
-
-	</form>
-
-	</div>
-    
 </body>
 </html>

@@ -110,6 +110,8 @@ public class AddBatchServlet extends HttpServlet {
 			e.printStackTrace();
 			System.out.println("Error while creating batch" +e);
 		}
+		
+//		db.closeConnection();
 	}
 
 }

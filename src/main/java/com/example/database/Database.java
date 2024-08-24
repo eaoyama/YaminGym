@@ -26,10 +26,6 @@ public class Database implements DAO {
 		return db;
 	}
 
-
-	//Need this??***
-	PreparedStatement preparedStatement;
-
 	
 	//methods
 	@Override
@@ -53,8 +49,8 @@ public class Database implements DAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			System.out.println("Error while connecting to MySQL." +e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -62,8 +58,8 @@ public class Database implements DAO {
 		try {
 			return connection == null || connection.isClosed();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			System.out.println("SQLExeption occured.");
+			e.printStackTrace();
 			return true;
 		}
 	}
@@ -77,8 +73,8 @@ public class Database implements DAO {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			e.printStackTrace();
 			System.out.println("Error while closing connection." +e);
+			e.printStackTrace();
 		}
 	}
 
@@ -110,37 +106,4 @@ public class Database implements DAO {
 	}
 
 
-	@Override
-	public Batch getBatch(Integer batchId) {
-		// TODO Auto-generated method stub
-		try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			System.out.println("Error while getting batch" +e);
-		}
-		return null;
-	}
-
-	@Override
-	public Participant getParticipant(Integer pId) {
-		// TODO Auto-generated method stub
-		try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			System.out.println("Error while getting participant" +e);
-		}
-		return null;
-		
-	}
-
-	@Override
-	public User getUser(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

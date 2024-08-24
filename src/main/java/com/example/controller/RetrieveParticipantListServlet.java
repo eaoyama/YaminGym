@@ -10,24 +10,24 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.database.Database;
-import com.example.model.User;
+import com.example.model.Participant;
 
 /**
- * Servlet implementation class RetrieveUserListServlet
+ * Servlet implementation class RetrieveParticipantListServlet
  */
-
-@WebServlet("/retrieveUserList")
-public class RetrieveUserListServlet extends HttpServlet {
+@WebServlet("/retrieveParticipantList")
+public class RetrieveParticipantListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveUserListServlet() {
+    public RetrieveParticipantListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,9 +41,9 @@ public class RetrieveUserListServlet extends HttpServlet {
 		
 		Database db = Database.getInstance();
 		
-		List<User> userList = new ArrayList<>();
+		List<Participant> participantList = new ArrayList<>();
 		
-		String sql = "select * from user";
+        String sql = "SELECT p.*, b.batchName FROM participant p JOIN batch b ON p.batchId = b.batchId";
 		
 		try (Connection connection = db.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)){
@@ -52,32 +52,37 @@ public class RetrieveUserListServlet extends HttpServlet {
 			
 			//Process the resultSet
 			while (resultSet.next()) {
-				User user = new User();
-				user.setUserId(resultSet.getInt("userId"));
-				user.setUserFirstName(resultSet.getString("userFirstName"));
-				user.setUserLastName(resultSet.getString("userLastName"));
-				user.setUserEmail(resultSet.getString("userEmail"));
-				user.setUserPassword(resultSet.getString("userPassword"));
+				Participant participant = new Participant();		
 				
-				userList.add(user);
+                participant.setpId(resultSet.getInt("pId"));
+                participant.setFirstName(resultSet.getString("firstName"));
+                participant.setLastName(resultSet.getString("lastName"));
+                participant.setPhone(resultSet.getString("phone"));
+                participant.setEmail(resultSet.getString("email"));
+                participant.setStartDate(resultSet.getDate("startDate").toLocalDate());
+                participant.setBatchId(resultSet.getInt("batchId"));
+                participant.setBatchName(resultSet.getString("batchName"));
+
+				participantList.add(participant);
 				
 			}
 			
 	        // Set the list of users as a request attribute
-			request.setAttribute("successMessage", "Current list of admin users:");
-			request.setAttribute("userList", userList);
+			request.setAttribute("successMessage", "Current list of participants:");
+			request.setAttribute("participantList", participantList);
             
 
             // Forward the request to the JSP page
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/retrieveUserList.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/retrieveParticipantList.jsp");
             dispatcher.forward(request, response);
             
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error while retrieving user" +e);
+			System.out.println("Error while retrieving participant list" +e);
 			e.printStackTrace();
  
 		}
+		
 		
 	}
 

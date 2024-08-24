@@ -10,24 +10,26 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.database.Database;
-import com.example.model.User;
+import com.example.model.Batch;
 
 /**
- * Servlet implementation class RetrieveUserListServlet
+ * Servlet implementation class RetrieveBatchListServlet
  */
-
-@WebServlet("/retrieveUserList")
-public class RetrieveUserListServlet extends HttpServlet {
+@WebServlet("/retrieveBatchList")
+public class RetrieveBatchListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RetrieveUserListServlet() {
+    public RetrieveBatchListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,9 +43,9 @@ public class RetrieveUserListServlet extends HttpServlet {
 		
 		Database db = Database.getInstance();
 		
-		List<User> userList = new ArrayList<>();
+		List<Batch> batchList = new ArrayList<>();
 		
-		String sql = "select * from user";
+		String sql = "select * from batch";
 		
 		try (Connection connection = db.getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)){
@@ -52,32 +54,40 @@ public class RetrieveUserListServlet extends HttpServlet {
 			
 			//Process the resultSet
 			while (resultSet.next()) {
-				User user = new User();
-				user.setUserId(resultSet.getInt("userId"));
-				user.setUserFirstName(resultSet.getString("userFirstName"));
-				user.setUserLastName(resultSet.getString("userLastName"));
-				user.setUserEmail(resultSet.getString("userEmail"));
-				user.setUserPassword(resultSet.getString("userPassword"));
+				Batch batch = new Batch();
+				batch.setBatchId(resultSet.getInt("batchId"));
+				batch.setBatchName(resultSet.getString("batchName"));
+//				batch.setDayOfClass(resultSet.getString("dayOfClass"));
+//				batch.setStartHour(resultSet.getTime("startHour"));
 				
-				userList.add(user);
+				String dayOfClassString = resultSet.getString("dayOfClass");
+				DayOfWeek dayOfClass = DayOfWeek.valueOf(dayOfClassString.toUpperCase());
+				batch.setDayOfClass(dayOfClass);
+
+				LocalTime startHour = resultSet.getTime("startHour").toLocalTime();
+				batch.setStartHour(startHour);
+
+				batchList.add(batch);
 				
 			}
 			
 	        // Set the list of users as a request attribute
-			request.setAttribute("successMessage", "Current list of admin users:");
-			request.setAttribute("userList", userList);
+			request.setAttribute("successMessage", "Current list of classes:");
+			request.setAttribute("batchList", batchList);
             
 
             // Forward the request to the JSP page
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/retrieveUserList.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/retrieveBatchList.jsp");
+
             dispatcher.forward(request, response);
             
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Error while retrieving user" +e);
+			System.out.println("Error while retrieving batch list" +e);
 			e.printStackTrace();
  
 		}
+		
 		
 	}
 
